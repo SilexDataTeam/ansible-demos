@@ -1,0 +1,9 @@
+- name: Debug Storage Array
+  ansible.builtin.debug:
+    var: storage_array
+    verbosity: 1
+
+- name: Extend Disk if disk_percent > 85
+  ansible.builtin.debug:
+    msg: "Extending {{ storage_array.key }} - disk usage was {{ storage_array.value.disk_percent }}%"
+  when: storage_array.value.disk_percent > 85
