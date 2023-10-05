@@ -2,11 +2,5 @@
   hosts: storage_servers
   gather_facts: false
 
-  tasks:
-    - name: Include gather_data role
-      ansible.builtin.include_role:
-        name: gather_data
-
-    - name: Process storage systems
-      ansible.builtin.include_role:
-        name: process_data
+  roles:
+    - role: process_data
