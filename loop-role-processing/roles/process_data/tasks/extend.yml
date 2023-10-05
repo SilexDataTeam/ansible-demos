@@ -1,0 +1,10 @@
+---
+- name: Extend Disk
+  ansible.builtin.debug:
+    msg: |
+      Extending {{ storage_disk.key }}
+
+      Disk usage was {{ storage_disk.value.disk_percent }}% which is greater than {{ process_data__threshold }}%
+
+      Total space used is {{ storage_disk.value.disk_size }}
+  when: storage_disk.value.disk_percent > process_data__threshold
