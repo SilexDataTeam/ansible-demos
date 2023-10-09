@@ -1,3 +1,5 @@
 ---
+# process_data role requires the storage_data variable defined in gather_data
+# so include it as a dependency
 dependencies:
   - role: gather_data

@@ -1,6 +1,6 @@
 - name: Storage Discover
-  hosts: storage_servers
-  gather_facts: false
+  hosts: storage_servers  # run against the storage_servers group defined in inventory/hosts.yml
+  gather_facts: false     # skip gathering facts about the hosts
 
   roles:
-    - role: process_data
+    - role: process_data  # include the process_data role - starts with main.yml
