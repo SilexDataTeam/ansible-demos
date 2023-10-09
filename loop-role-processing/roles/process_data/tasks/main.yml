@@ -1,8 +1,12 @@
+---
+# When verbose flags are passed, display the storage_data results from the gather_data role
 - name: Debug Storage Array
   ansible.builtin.debug:
     var: storage_data
     verbosity: 1
 
+# Loop over each entry in the storage_data dictionary so we can process each storage device
+# This flattens the dictionary and calls extend.yml for each server->disk entry (16 total in this example - 4 servers, 4 disks for each)
 - name: Extend Disk if disk_percent exceeds threshold
   ansible.builtin.include_tasks: extend.yml
   loop: "{{ storage_data | dict2items }}"

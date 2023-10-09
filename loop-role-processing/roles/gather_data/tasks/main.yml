@@ -1,3 +1,13 @@
+---
+# Task to gather data from each storage server. In this case, create random data that results in a dictionary
+# storage_data:
+#   storage1:
+#     disk_percent: 0-100
+#     disk_size: 0-10000000 bytes
+#   storage2:
+#     disk_percent: 0-100
+#     desk_size: 0-10000000 bytes
+#   ...
 - name: Gather Data from Fake Storage Devices
   ansible.builtin.set_fact:
     storage_data: "{{ storage_data | d({}) | combine({item: {'disk_percent': (100 | random), 'disk_size': (10000000 | random | string) + ' bytes'}}) }}"

@@ -1,4 +1,6 @@
 ---
+# Output a message when the threshold is exceeded. This could be multiple tasks that need to be run
+# on each storage server
 - name: Extend Disk
   ansible.builtin.debug:
     msg: |

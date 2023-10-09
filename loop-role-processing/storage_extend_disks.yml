@@ -1,12 +1,15 @@
 - name: Storage Discover
-  hosts: storage_servers
-  gather_facts: false
+  hosts: storage_servers  # run against the storage_servers group defined in inventory/hosts.yml
+  gather_facts: false     # skip gathering facts about the hosts
 
   tasks:
+    # Explicitly include the gather_data role. For an alternative, check out the use-meta-not-include branch of this repo
     - name: Include gather_data role
       ansible.builtin.include_role:
         name: gather_data
+        # tasks_from: another.yml   # This is useful if you need to start with tasks from another file besides main.yml
 
+    # Explicitly include the process_data role.
     - name: Process storage systems
       ansible.builtin.include_role:
         name: process_data
