@@ -1,0 +1,29 @@
+---
+- name: Create Network Decom ticket
+  tags:
+    - create-ticket
+  block:
+    - name: Create decom ticket with release date
+      community.general.jira:
+        uri: "{{ jira_url }}"
+        username: "{{ jira_username }}"
+        password: "{{ jira_password }}"
+        project: Infrastructure
+        operation: create
+        summary: "{{ network_ticket_summary }}"
+        description: "{{ network_ticket_message }}"
+        issuetype: Decommission
+      args:
+        fields:
+          release_date: "{{ '%Y-%m-%dT%H:%M:%S.000-0500' | strftime(ansible_date_time['epoch'] | int + (days_until_decom_release | int * 86400)) }}"
+      register: __decom_ticket_result
+
+    - name: Link decom ticket to staging ticket
+      community.general.jira:
+        uri: "{{ jira_url }}"
+        username: "{{ jira_username }}"
+        password: "{{ jira_password }}"
+        operation: link
+        linktype: Dependency
+        inwardissue: "{{ staging_jira_key }}"
+        outwardissue: "{{ __decom_ticket_result['meta']['key'] }}"

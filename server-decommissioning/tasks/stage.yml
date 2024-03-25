@@ -1,0 +1,96 @@
+---
+- name: Gather detailed information about tags and category associated with the given VM
+  community.vmware.vmware_guest_info:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    datacenter: "{{ datacenter_name }}"
+    name: "{{ vm_name }}"
+    tags: true
+    tag_details: true
+  register: __detailed_vm_info
+
+- name: Validate server is ready to be staged for decommission
+  block:
+    - name: Assert the power state is off
+      ansible.builtin.assert:
+        that:
+          - "'retired' in __detailed_vm_info.instance.tags"
+        fail_msg: "{{ vm_name }} does not have the 'retired' tag applied, therefore server decommissioning can not proceed."
+        success_msg: "{{ vm_name }} has the 'retired' tag applied. Continuing with the decommission."
+  rescue:
+    - name: Update staging ticket with information
+      community.general.jira:
+        uri: '{{ server }}'
+        username: '{{ user }}'
+        password: '{{ pass }}'
+        issue: '{{ staging_jira_key }}'
+        operation: comment
+        comment: |
+          {{ vm_name }} does not have the 'retired' tag applied, therefore server decommissioning can not proceed.
+
+          Please contact the Infrastructure team for more information.
+
+    - name: Stop processing decommission staging
+      ansible.builtin.fail:
+        msg: "Decommissioning Ticket has been updated with information. Stopping the decom process."
+
+- name: Ensure VM is powered down
+  community.vmware.vmware_guest_powerstate:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    name: "{{ vm_name }}"
+    state: shutdown-guest
+    state_change_timeout: 200
+  register: __power_result
+
+- name: Disable linux computer from Active Directory using a windows machine
+  microsoft.ad.computer:
+    name: "{{ vm_name }}"
+    enabled: false
+  delegate_to: windows-proxy.example.com
+
+- name: Create decom ticket
+  tags:
+    - create-ticket
+  block:
+    - name: Create decom ticket with release date
+      community.general.jira:
+        uri: "{{ jira_url }}"
+        username: "{{ jira_username }}"
+        password: "{{ jira_password }}"
+        project: Infrastructure
+        operation: create
+        summary: "{{ decom_ticket_summary }}"
+        description: "{{ decom_ticket_message }}"
+        issuetype: Decommission
+      args:
+        fields:
+          release_date: "{{ '%Y-%m-%dT%H:%M:%S.000-0500' | strftime(ansible_date_time['epoch'] | int + (days_until_decom_release | int * 86400)) }}"
+      register: __decom_ticket_result
+
+    - name: Link decom ticket to staging ticket
+      community.general.jira:
+        uri: "{{ jira_url }}"
+        username: "{{ jira_username }}"
+        password: "{{ jira_password }}"
+        operation: link
+        linktype: Dependency
+        inwardissue: "{{ staging_jira_key }}"
+        outwardissue: "{{ __decom_ticket_result['meta']['key'] }}"
+
+- name: Close staging ticket
+  block:
+    - name: Resolve the issue
+      community.general.jira:
+        uri: '{{ jira_url }}'
+        username: '{{ jira_username }}'
+        password: '{{ jira_password }}'
+        issue: '{{ staging_jira_key }}'
+        operation: transition
+        status: Resolve Issue
+        fields:
+          resolution:
+            name: Done
+          description: Server {{ vm_name }} has been powered off and staged for decommission.

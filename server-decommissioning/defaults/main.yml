@@ -1,0 +1,10 @@
+---
+decom_ticket_summary: Decommission Server {{ vm_name }}
+decom_ticket_message: Decommission Server {{ vm_name }} on release date.
+
+decom_server_ip: "{{ lookup('dig', decom_server_name) | regex_replace('NXDOMAIN', 'unavailable') }}"
+
+network_ticket_summary: Server decommission - {{ decom_server_name }} - NTW
+network_ticket_message: |-
+  {{ vm_name }} has been decommissioned. IP address: {{ decom_server_ip }}
+    Remove all associated objects.
