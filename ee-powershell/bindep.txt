@@ -1,1 +1,4 @@
+gcc
 powershell
+python3-devel
+vim-enhanced
