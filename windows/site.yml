@@ -1,0 +1,8 @@
+---
+- name: Apply desired state to systems
+  hosts: os_windows
+
+  tasks:
+    - name: Convert Current Year to Words
+      silex.soap.numbers_to_words:
+        convert_number: "{{ lookup('ansible.builtin.pipe', 'date +%Y') }}"
