@@ -24,6 +24,9 @@
 1. Go to <https://c.ai.ansible.redhat.com/console/admin/settings> and enter the API key.
 2. Add the Model ID from <https://dataplatform.cloud.ibm.com/wx/setup>
 
+## Enhancements
+
+If the IBM Cloud account is a Standard Plan, the last step of the [setup](https://cloud.ibm.com/docs/watsonx-code-assistant?topic=watsonx-code-assistant-cloud-setup-a#create-project) allows a project to be created that can be trained on existing code so that suggestions are more in alignment with the organizations standards.
 
 ## Information
 
@@ -31,4 +34,5 @@ The Red Hat platform for Lightspeed is located at <https://c.ai.ansible.redhat.c
 
 An [IBM Cloud account](https://cloud.ibm.com/registration) is required to use WatsonX Code Assistant to back Lightspeed. Details on how to configure are available [here](https://cloud.ibm.com/docs/watsonx-code-assistant?topic=watsonx-code-assistant-cloud-setup-a).
 
-Create an instance of WatsonX in the [IBM Cloud](https://cloud.ibm.com/)
+Service ID/API management: <https://cloud.ibm.com/iam/serviceids/>
+Model management: <https://dataplatform.cloud.ibm.com/ml-runtime/spaces>
