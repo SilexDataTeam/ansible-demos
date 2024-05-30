@@ -1,0 +1,6 @@
+---
+plugin: theforeman.foreman.foreman
+url: https://satellite.hyclaklab.local
+user: ansible
+password: ansible
+validate_certs: false
