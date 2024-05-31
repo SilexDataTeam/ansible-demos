@@ -30,9 +30,15 @@ If the IBM Cloud account is a Standard Plan, the last step of the [setup](https:
 
 ## Information
 
+Red Hat [Getting Started Guide](https://www.redhat.com/en/blog/getting-started-red-hat-ansible-lightspeed-ibm-watsonx-code-assistant) for Lightspeed
+
 The Red Hat platform for Lightspeed is located at <https://c.ai.ansible.redhat.com/>
 
 An [IBM Cloud account](https://cloud.ibm.com/registration) is required to use WatsonX Code Assistant to back Lightspeed. Details on how to configure are available [here](https://cloud.ibm.com/docs/watsonx-code-assistant?topic=watsonx-code-assistant-cloud-setup-a).
 
 Service ID/API management: <https://cloud.ibm.com/iam/serviceids/>
 Model management: <https://dataplatform.cloud.ibm.com/ml-runtime/spaces>
+
+## Canned Lab
+
+<https://labs.demoredhat.com/webpages/lightspeed>
