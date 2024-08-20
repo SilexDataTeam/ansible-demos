@@ -1,5 +1,5 @@
 ---
-- name: Remove linux computer from Active Directory using a windows machine
+- name: Ensure linux computer object is removed from Active Directory (using a windows machine)
   microsoft.ad.computer:
     name: "{{ vm_name }}"
     state: absent

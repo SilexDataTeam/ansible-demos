@@ -7,29 +7,29 @@
         hostname: "{{ datacenter_name }}"
         datacenter: "{{ vmware_datacenter }}"
         name: "{{ vmware_guest_name }}"
-      register: server_info
+      register: __server_info
   rescue:
     - name: VM does not exist
       ansible.builtin.set_fact:
-        vm_not_found: true
-      when: "'non-existing' in (server_info['msg']|default(''))"
+        __vm_found: false
+      when: "'non-existing' in (__server_info['msg']|default(''))"
 
     - name: Display VM information
       ansible.builtin.debug:
         msg: "{{ decom_server_name }} does not exist. VM appears to have been deleted previously."
-      when: "'non-existing' in (server_info['msg']|default(''))"
+      when: "'non-existing' in (__server_info['msg']|default(''))"
 
     - name: VM Lookup Failure
       ansible.builtin.fail:
         msg: "Failure checking status of VM {{ decom_server_name }}"
-      when: "'non-existing' not in (server_info['msg']|default(''))"
+      when: "'non-existing' not in (__server_info['msg']|default(''))"
 
 - name: Assert that server is in powered off state
   ansible.builtin.assert:
     that:
-      - server_info['instance']['hw_power_status']|default('') == 'poweredOff'
+      - __server_info['instance']['hw_power_status']|default('') == 'poweredOff'
     fail_msg: "Server not in powered off state"
-  when: not vm_not_found|default(False)
+  when: __vm_found | default(true)
 
 - name: Include Remove Server Tasks
   ansible.builtin.include_tasks: remove_server.yml

@@ -1,4 +1,10 @@
 ---
+# Expected from job template
+# decom_server_name: FQDN of server being decommissioned
+# staging_jira_key: Jira Issue key of decommission request
+
+days_until_decom_release: 14
+
 decom_ticket_summary: Decommission Server {{ vm_name }}
 decom_ticket_message: Decommission Server {{ vm_name }} on release date.
 
