@@ -1,0 +1,12 @@
+---
+- name: Configure Stats for Workflow Example
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Get current date_time
+      ansible.builtin.set_stats:
+        configure_date_time: "{{ ansible_date_time }}"
+
+    - name: Set Service State
+      ansible.builtin.set_stats:
+        configure_service: running

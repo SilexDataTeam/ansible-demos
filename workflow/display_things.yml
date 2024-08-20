@@ -1,0 +1,16 @@
+- name: Display Data from Previous Workflow
+  hosts: localhost
+  gather_facts: true
+
+  tasks:
+    - name: Display current date_time
+      ansible.builtin.debug:
+        var: ansible_date_time
+
+    - name: Display date_time from previous
+      ansible.builtin.debug:
+        var: configure_date_time
+
+    - name: Display service status
+      ansible.builtin.debug:
+        var: configure_service
