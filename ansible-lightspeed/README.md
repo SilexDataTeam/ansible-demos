@@ -2,24 +2,17 @@
 
 The Red Hat [Lightspeed 101 Workshop](https://play.instruqt.com/embed/redhat/tracks/lightspeed-101) is (permanently?) down for maintenance. As a workaround, we have updated some of the demo playbooks to utilize the resources in a standard [Ansible for RHEL](https://aap2.demoredhat.com/exercises/ansible_rhel/) workshop.
 
-Currently it is possible to sign up for a free 90-day trial of WatsonX by following the instructions at <https://www.redhat.com/en/products/interactive-walkthrough/install-ansible-lightspeed>.
-
 Please follow the instructions in the docs folder to configure the environment.
 
 1. [VSCode Setup](./docs/vscode_setup.md) to configure VSCode for use with the lab environment.
 2. [AAP Setup](./docs/aap_setup.md) to configure Ansible Automation Platform.
 3. [Lab](./docs/install_apache.md)
 
-## VS Code Configuration
-
-1. In VSCode, install the [Ansible extension](https://marketplace.visualstudio.com/items?itemName=redhat.ansible) from Red Hat
-2. Open the VSCode Settings, search for Lightspeed and ensure that the following settings are enabled:
-   1. `Ansible > Lightspeed`
-   2. `Ansible > Lightspeed > Suggestions`
-3. Click the Lightspeed box on the right side of the status bar at the bottom of VSCode
-4. Use your Red Hat credentials to log in
-
 ## IBM Cloud Configuration
+
+Currently it is possible to sign up for a free 90-day trial of WatsonX by following the instructions at <https://www.redhat.com/en/products/interactive-walkthrough/install-ansible-lightspeed>.
+
+If not following those instructions, creating a WatsonX account can be done by completing the following steps:
 
 1. Log into your [IBM Cloud](https://cloud.ibm.com/) account
 2. Create a `IBM watsonx Code Assistant` service
@@ -36,7 +29,7 @@ Please follow the instructions in the docs folder to configure the environment.
 
 ## Enhancements
 
-If the IBM Cloud account is a Standard Plan, the last step of the [setup](https://cloud.ibm.com/docs/watsonx-code-assistant?topic=watsonx-code-assistant-cloud-setup-a#create-project) allows a project to be created that can be trained on existing code so that suggestions are more in alignment with the organizations standards.
+If the IBM Cloud account is a Standard Plan, the last step of the [setup](https://cloud.ibm.com/docs/watsonx-code-assistant?topic=watsonx-code-assistant-cloud-setup-a#create-project) allows a project to be created that can be trained on existing code so that suggestions are more in alignment with the organizations standards. This will not be covered in this workshop.
 
 ## Information
 
