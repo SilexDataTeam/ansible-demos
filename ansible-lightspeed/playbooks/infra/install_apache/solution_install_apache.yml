@@ -4,9 +4,11 @@
   hosts: web
   become: true
   tasks:
-    - name: Install Python Library for Firewall Management
+    - name: Install Packages for Firewall Management
       ansible.builtin.package:
-        name: python3-firewall
+        name:
+          - python3-firewall
+          - firewalld
         state: present
 
     # Install apache webserver & open firewall port 80 for the webserver &  create a custom index.html file that has "I'm a custom website" as content & start the service
