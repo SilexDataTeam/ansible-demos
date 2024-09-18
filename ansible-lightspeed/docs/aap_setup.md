@@ -20,6 +20,8 @@ Setting up this repository as a Project in Ansible Automation Platform will allo
 
 If you would like to make/save changes, please use a GitHub account to fork <https://github.com/SilexDataTeam/ansible-demos> into your own account and use that URL for the remaining steps. Otherwise, you can use this link.
 
+This content is adapted from <https://github.com/ansible/ansible-lightspeed-demos> to work with the Red Hat RHEL lab.
+
 ### Clone to the Control Node
 
 To use the repository in the remote VSCode session, it needs to be cloned to the /home/student directory in your VSCode Terminal

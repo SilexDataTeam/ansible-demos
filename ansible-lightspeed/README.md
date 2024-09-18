@@ -2,12 +2,13 @@
 
 The Red Hat [Lightspeed 101 Workshop](https://play.instruqt.com/embed/redhat/tracks/lightspeed-101) is (permanently?) down for maintenance. As a workaround, we have updated some of the demo playbooks to utilize the resources in a standard [Ansible for RHEL](https://aap2.demoredhat.com/exercises/ansible_rhel/) workshop.
 
-Currently it is possible to sign up for a free 90-day trial of WatsonX by following the instructions at https://www.redhat.com/en/products/interactive-walkthrough/install-ansible-lightspeed.
+Currently it is possible to sign up for a free 90-day trial of WatsonX by following the instructions at <https://www.redhat.com/en/products/interactive-walkthrough/install-ansible-lightspeed>.
 
 Please follow the instructions in the docs folder to configure the environment.
 
-1. [VSCode Setup](../docs/vscode_setup.md) to configure VSCode for use with the lab environment.
-2. [AAP Setup](../aap_setup.md) to configure Ansible Automation Platform.
+1. [VSCode Setup](./docs/vscode_setup.md) to configure VSCode for use with the lab environment.
+2. [AAP Setup](./docs/aap_setup.md) to configure Ansible Automation Platform.
+3. [Lab](./docs/install_apache.md)
 
 ## VS Code Configuration
 
