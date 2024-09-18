@@ -4,7 +4,10 @@ The Red Hat [Lightspeed 101 Workshop](https://play.instruqt.com/embed/redhat/tra
 
 Currently it is possible to sign up for a free 90-day trial of WatsonX by following the instructions at https://www.redhat.com/en/products/interactive-walkthrough/install-ansible-lightspeed.
 
-Please follow the instructions in the [VSCode Setup](./vscode_setup.md) to configure VSCode for use with the lab environment.
+Please follow the instructions in the docs folder to configure the environment.
+
+1. [VSCode Setup](../docs/vscode_setup.md) to configure VSCode for use with the lab environment.
+2. [AAP Setup](../aap_setup.md) to configure Ansible Automation Platform.
 
 ## VS Code Configuration
 
@@ -20,8 +23,8 @@ Please follow the instructions in the [VSCode Setup](./vscode_setup.md) to confi
 1. Log into your [IBM Cloud](https://cloud.ibm.com/) account
 2. Create a `IBM watsonx Code Assistant` service
 3. Run the setup
-   1. ![Initial Setup](./docs/img/WatsonX_setup1.png)
-   2. ![Setup Tasks](./docs/img/WatsonX_setup2.png)
+   1. ![Initial Setup](./assets/img/WatsonX_setup1.png)
+   2. ![Setup Tasks](./assets/img/WatsonX_setup2.png)
    3. Follow the instructions [here](https://cloud.ibm.com/docs/watsonx-code-assistant?topic=watsonx-code-assistant-cloud-setup-a#sid_apikey) to create a Service ID and API Key
    4. Save the API Key when presented. This can not be retrieved later.
 
