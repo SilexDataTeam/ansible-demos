@@ -48,4 +48,6 @@ Add a Job Template to run one of the playbooks from the repository via AAP
 2. Click `Add`
 3. Add the Project to your AAP Controller with the following settings:
 
+![AAP Job Template](../assets/img/aap_job_template.png)
+
 Additional Job Templates can be created for the other playbooks in the repository.
