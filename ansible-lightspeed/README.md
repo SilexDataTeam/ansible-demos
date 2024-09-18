@@ -1,5 +1,11 @@
 # Ansible Lightspeed
 
+The Red Hat [Lightspeed 101 Workshop](https://play.instruqt.com/embed/redhat/tracks/lightspeed-101) is (permanently?) down for maintenance. As a workaround, we have updated some of the demo playbooks to utilize the resources in a standard [Ansible for RHEL](https://aap2.demoredhat.com/exercises/ansible_rhel/) workshop.
+
+Currently it is possible to sign up for a free 90-day trial of WatsonX by following the instructions at https://www.redhat.com/en/products/interactive-walkthrough/install-ansible-lightspeed.
+
+Please follow the instructions in the [VSCode Setup](./vscode_setup.md) to configure VSCode for use with the lab environment.
+
 ## VS Code Configuration
 
 1. In VSCode, install the [Ansible extension](https://marketplace.visualstudio.com/items?itemName=redhat.ansible) from Red Hat
@@ -39,6 +45,6 @@ An [IBM Cloud account](https://cloud.ibm.com/registration) is required to use Wa
 Service ID/API management: <https://cloud.ibm.com/iam/serviceids/>
 Model management: <https://dataplatform.cloud.ibm.com/ml-runtime/spaces>
 
-## Canned Lab
+## Reference Lab
 
 <https://labs.demoredhat.com/webpages/lightspeed>
