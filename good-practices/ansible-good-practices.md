@@ -26,7 +26,7 @@ This document contains Silex's recommendations for good practices around Ansible
           msg: "Host: {{ _host.name }}"
         loop: "{{ __host_list }}"
         loop_control:
-        loop_var: _host
+          loop_var: _host
       ```
 
 4. Internal variables should never be defined directly in the inventory. There is usually a "public" role variable that will coalesce into the "private" variable. Generally checking the defaults/main.yml is a good place to start for those.
