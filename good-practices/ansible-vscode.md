@@ -6,7 +6,7 @@ VSCode has plugins created to make Ansible development easier. This document wal
 
 Setting up a separate Python virtual environment keeps any changes needed for versions of Ansible separate from the system Python.
 
-### Linux/MacOS
+### Linux/MacOS/WSL
 
 1. Create the environment using the version of Python you would like. Generally this should be a recent version of Python 3 as documented on the [Ansible Docs Release and Maintenance](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#support-life) page. Targeting a specific version of Ansible core is recommended to ensure alignment with your Automation Platform Execution Environments. In this example, we are targeting Ansible 2.17 using Python 3.12 and installing the ansible-dev-tools package which contains several helpful utilities.
 
@@ -56,7 +56,9 @@ The following settings are recommended to play nicely with `ansible-lint` and he
 2. Ansible Settings
     - Click the "Manage" Gear in the bottom left of VSCode and select Settings
     - Search for ansible
-    - Enter the path to your virtual environment in the `Ansible > Python: Activation Script` setting
+    - Enter the path to your virtual environment activation script in the `Ansible > Python: Activation Script` setting
+
+      **NOTE**: If using WSL, this path would be from within the WSL system, not the Windows filesystem path.
 
 3. Whitespace Settings
     - Click the "Manage" Gear in the bottom left of VSCode and select Settings
@@ -71,3 +73,47 @@ The following settings are recommended to play nicely with `ansible-lint` and he
     - Check the options for `Files: Insert Final Newline` and `Files: Trim Final Newlines`
 
       ![VSCode Newline](./img/ansible-vscode-newline.png)
+
+## Windows Caveats
+
+In order to make use of tools like `ansible-lint`, Windows needs some assistance from a Linux server. This can either be a separate host like a utility server available via SSH or it can be a Linux image running in WSL.
+
+### Remote-SSH
+
+1. Remote-SSH Extension:
+    - Click the "Manage" Gear in the bottom left of VSCode and select Extensions
+    - Search for "Remote SSH"
+    - Click "Install" on the Microsoft provided extension for Remote SSH
+
+      ![VSCode Remote SSH](./img/ansible-vscode-remote-ssh.png)
+
+2. Open Remote SSH Host
+    - Click `View -> Command Palette`
+    - Type `Remote-SSH`
+    - Click `Remote-SSH: Connect Current Window to Host...` and follow the prompts to connect to your remote SSH server.
+
+      ![VSCode Remote SSH Command](./img/ansible-vscode-remote-ssh-command.png)
+
+### WSL
+
+1. WSL Extension
+    - Click the "Manage" Gear in the bottom left of VSCode and select Extensions
+    - Search for Ansible
+    - Click "Install" on the Microsoft provided extension for WSL
+
+      ![VSCode WSL](./img/ansible-vscode-wsl.png)
+
+2. Open WSL Directory
+    - Click `View -> Command Palette`
+    - Type `WSL`
+    - Click `WSL: Connect to WSL`.
+
+      ![VSCode WSL Command Palette](./img/ansible-vscode-wsl-command.png)
+
+    - Use the window that opens normally, but notice in the bottom left corner that indicates you are in the WSL environment.
+
+      ![VSCode WSL Status](./img/ansible-vscode-wsl-status.png)
+
+    - Opening files or directories you can see they are within the WSL environment, not your Windows environment.
+
+      ![VSCode WSL Files](./img/ansible-vscode-wsl-files.png)
